@@ -4,7 +4,7 @@
         <arguments>
             <argument name="updateSteps" xsi:type="array">
                 <!-- Config update start -->
-                <item name="remote-storage" xsi:type="object" priority="150">ExequielLares\CloudCustomScenario\Step\Build\EnableIndexerUseApplicationLock</item>
+                <item name="remote-storage" xsi:type="object" priority="150">ExequielLares\CloudCustomScenario\Step\EnableIndexerUseApplicationLock</item>
                 <!-- Config update end -->
             </argument>
         </arguments>
