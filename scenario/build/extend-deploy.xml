@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:ece-tools:config/scenario.xsd">
+    <step name="install-update" type="Magento\MagentoCloud\Step\Deploy\InstallUpdate" priority="800">
+        <arguments>
+            <argument name="updateSteps" xsi:type="array">
+                <!-- Config update start -->
+                <item name="remote-storage" xsi:type="object" priority="150">ExequielLares\CloudCustomScenario\Step\Build\EnableIndexerUseApplicationLock</item>
+                <!-- Config update end -->
+            </argument>
+        </arguments>
+    </step>
+</scenario>
