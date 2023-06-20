@@ -11,6 +11,7 @@ use Magento\MagentoCloud\App\Error;
 use Magento\MagentoCloud\Filesystem\FileSystemException;
 use Magento\MagentoCloud\Config\Magento\Env\WriterInterface;
 use Psr\Log\LoggerInterface;
+use Magento\MagentoCloud\Step\StepInterface;
 
 /**
  * Switching magento to production mode.

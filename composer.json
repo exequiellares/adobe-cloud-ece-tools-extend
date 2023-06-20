@@ -16,5 +16,8 @@
             "email": "exequiellares@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "magento/ece-tools": "*"
+    }
 }
