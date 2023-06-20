@@ -13,6 +13,7 @@ use Magento\MagentoCloud\Config\Magento\Env\WriterInterface;
 use Magento\MagentoCloud\Config\Environment;
 use Psr\Log\LoggerInterface;
 use Magento\MagentoCloud\Step\StepInterface;
+use Magento\MagentoCloud\Step\StepException;
 
 /**
  * Switching magento to production mode.
@@ -40,6 +41,7 @@ class EnableIndexerUseApplicationLock implements StepInterface
     /**
      * @param LoggerInterface $logger
      * @param WriterInterface $deployConfigWriter
+     * @param Environment $env
      */
     public function __construct(
         LoggerInterface $logger,
