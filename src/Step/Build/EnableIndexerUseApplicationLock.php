@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace ExequielLares\CloudCustomScenario\Step;
+namespace ExequielLares\CloudCustomScenario\Step\Build;
 
 use Magento\MagentoCloud\App\Error;
 use Magento\MagentoCloud\Filesystem\FileSystemException;
