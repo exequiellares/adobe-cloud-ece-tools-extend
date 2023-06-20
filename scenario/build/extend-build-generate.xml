@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:ece-tools:config/scenario.xsd">
     <!-- Enable use_application_lock -->
-    <step name="enable-application-lock" type="ExequielLares\CloudCustomScenario\Step\EnableIndexerUseApplicationLock" priority="210"/>
+    <step name="indexer-application-lock" type="ExequielLares\CloudCustomScenario\Step\EnableIndexerUseApplicationLock" priority="210"/>
 </scenario>

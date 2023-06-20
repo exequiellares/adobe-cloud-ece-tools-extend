@@ -10,6 +10,7 @@ namespace ExequielLares\CloudCustomScenario\Step;
 use Magento\MagentoCloud\App\Error;
 use Magento\MagentoCloud\Filesystem\FileSystemException;
 use Magento\MagentoCloud\Config\Magento\Env\WriterInterface;
+use Magento\MagentoCloud\Config\Environment;
 use Psr\Log\LoggerInterface;
 use Magento\MagentoCloud\Step\StepInterface;
 
@@ -20,6 +21,7 @@ use Magento\MagentoCloud\Step\StepInterface;
  */
 class EnableIndexerUseApplicationLock implements StepInterface
 {
+    const INDEXER_USE_APPLICATION_LOCK = 'CONFIG_INDEXER_USE_APPLICATION_LOCK';
     /**
      * @var WriterInterface
      */
@@ -31,15 +33,22 @@ class EnableIndexerUseApplicationLock implements StepInterface
     private $logger;
 
     /**
+     * @var Environment
+     */
+    private $env;
+
+    /**
      * @param LoggerInterface $logger
      * @param WriterInterface $deployConfigWriter
      */
     public function __construct(
         LoggerInterface $logger,
-        WriterInterface $deployConfigWriter
+        WriterInterface $deployConfigWriter,
+        Environment $env
     ) {
         $this->logger = $logger;
         $this->writer = $deployConfigWriter;
+        $this->env = $env;
     }
 
     /**
@@ -47,9 +56,21 @@ class EnableIndexerUseApplicationLock implements StepInterface
      */
     public function execute()
     {
+        $this->logger->info('Customized step for enabling indexer application lock');
+        $variables = $this->env->getVariables();
+        $enable = false;
+        if (isset($variables[self::INDEXER_USE_APPLICATION_LOCK])) {
+            $enable = (bool)$variables[self::INDEXER_USE_APPLICATION_LOCK];
+            $this->logger->info('Value read from environment variable CONFIG_INDEXER_USE_APPLICATION_LOCK: ' . $enable);
+        }
         try {
-            $this->logger->info('Customized step for enabling indexer application lock');
-            $this->writer->update(['indexer' => ['use_application_lock' => true]]);
+            $config = [
+                'indexer' => [
+                    'use_application_lock' => $enable
+                ]
+            ];
+            $this->writer->update($config);
+            $this->logger->info('Values updated in env.php ' . json_encode($config));
         } catch (FileSystemException $e) {
             throw new StepException($e->getMessage(), Error::BUILD_ENV_PHP_IS_NOT_WRITABLE, $e);
         } catch (\Exception $e) {
