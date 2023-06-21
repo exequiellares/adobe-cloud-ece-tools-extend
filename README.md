@@ -2,12 +2,12 @@
 
 To execute extended build:generate scenario run next command from your Magento Cloud project:
 ```
-php ./vendor/bin/ece-tools run vendor/magento/ece-tools/scenario/build/generate.xml ./vendor/exequiellares/adobe-cloud-ece-tools-extend/scenario/build/extend-build-generate.xml
+php ./vendor/bin/ece-tools run scenario/build/generate.xml ./vendor/exequiellares/adobe-cloud-ece-tools-extend/scenario/build/extend-build-generate.xml
 ```
 
 To execute extended deploy scenario run next command from your Magento Cloud project:
 ```
-php ./vendor/bin/ece-tools run vendor/magento/ece-tools/scenario/deploy.xml ./vendor/exequiellares/adobe-cloud-ece-tools-extend/scenario/extend-deploy.xml
+php ./vendor/bin/ece-tools run scenario/deploy.xml ./vendor/exequiellares/adobe-cloud-ece-tools-extend/scenario/extend-deploy.xml
 ```
 
 You can extend base scenario with different custom scenarios.
