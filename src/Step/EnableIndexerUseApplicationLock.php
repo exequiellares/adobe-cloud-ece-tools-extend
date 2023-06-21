@@ -64,6 +64,8 @@ class EnableIndexerUseApplicationLock implements StepInterface
         if (isset($variables[self::INDEXER_USE_APPLICATION_LOCK])) {
             $enable = (bool)$variables[self::INDEXER_USE_APPLICATION_LOCK];
             $this->logger->info('Value read from environment variable CONFIG_INDEXER_USE_APPLICATION_LOCK: ' . $enable);
+        } else {
+            $this->logger->info('Variable ' . self::INDEXER_USE_APPLICATION_LOCK .' is not set. Set to FALSE. Current variables: ' . json_encode($variables));
         }
         try {
             $config = [
